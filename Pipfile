@@ -11,6 +11,7 @@ black = "*"
 kaggle = "*"
 fredapi = "*"
 pandas = "*"
+requests = "*"
 
 [dev-packages]
 
