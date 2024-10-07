@@ -8,6 +8,9 @@ ipykernel = "*"
 jupyter = "*"
 notebook = "*"
 black = "*"
+kaggle = "*"
+fredapi = "*"
+pandas = "*"
 
 [dev-packages]
 
