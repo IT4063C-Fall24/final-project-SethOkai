@@ -1,6 +1,6 @@
 import requests
 
-api_key = 'your_api_key_here'
+api_key = '166fbd6bbd2d4951af0431d257b62d42'
 
 url = f'https://api.bls.gov/publicAPI/v2/timeseries/data/'
 
