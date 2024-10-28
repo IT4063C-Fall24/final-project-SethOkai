@@ -55,7 +55,7 @@
 
 # ## Importing libraries and loading datasets
 
-# In[20]:
+# In[26]:
 
 
 import matplotlib.pyplot as plt
@@ -80,7 +80,7 @@ analysis_data = pd.read_csv('unemployment_analysis.csv')
 # - Dropped columns that may not be necessary.
 # - Melted the DataFrame to have a long format for better analysis.
 
-# In[21]:
+# In[6]:
 
 
 # Loaded the datasets
@@ -154,7 +154,7 @@ print("\nCleaned Analysis Data:\n", analysis_data_cleaned.head())
 # 
 # **Summary: This graph shows some key indicators of U.S. unemployment from years past. Deep spikes could be times of financial crisis, and steep dips could be times of economic recovery.**
 
-# In[22]:
+# In[7]:
 
 
 import matplotlib.pyplot as plt
@@ -176,7 +176,7 @@ plt.show()
 # 
 # **Summary: This graph shows some key indicators of U.S. unemployment from years past. Deep spikes could be times of financial crisis, and steep dips could be times of economic recovery.**
 
-# In[23]:
+# In[8]:
 
 
 fred_data_cleaned['Date'] = pd.to_datetime(fred_data['Date'])
@@ -197,7 +197,7 @@ plt.show()
 
 # 
 
-# In[24]:
+# In[9]:
 
 
 #  Line Chart for BLS Unemployment Data
@@ -224,7 +224,7 @@ plt.show()
 # 
 # **Summary: This graph shows some key indicators of U.S. unemployment from years past. Deep spikes could be times of financial crisis, and steep dips could be times of economic recovery.**
 
-# In[25]:
+# In[10]:
 
 
 fred_data_cleaned['Date'] = pd.to_datetime(fred_data['Date'])
@@ -245,7 +245,7 @@ plt.show()
 # 
 # Insights: The interactive feature enhances comparison across countries. You can easily spot which countries faced higher unemployment rates during certain years and identify global or regional trends. For example, global recessions like the 2008 financial crisis may be reflected in multiple countries.
 
-# In[26]:
+# In[11]:
 
 
 import plotly.express as px
@@ -278,7 +278,7 @@ fig.show()
 # - Converted 'Year' column to datetime for BLS data
 # - Merged BLS and FRED data on 'Year'
 
-# In[27]:
+# In[12]:
 
 
 import pandas as pd
@@ -326,7 +326,7 @@ plt.show()
 # 
 # **Insights: Interactive option gives country comparison. It’s easy to spot which countries experienced higher unemployment in some years, and to see global or regional patterns. Global recessions such as the financial crisis of 2008, for instance, can manifest in more than one nation.**
 
-# In[28]:
+# In[13]:
 
 
 import plotly.express as px
@@ -362,13 +362,13 @@ fig.show()
 
 # 
 
-# In[29]:
+# In[14]:
 
 
 bls_fred_cleaned.columns
 
 
-# In[30]:
+# In[15]:
 
 
 import pandas as pd
@@ -405,11 +405,18 @@ plt.tight_layout()
 plt.show()
 
 
+# ## Machine learning
+# For this project I could try various machine learning methods like supervised learning methods. I might use regression to predict unemployment, for example, on the basis of some critieria such as economic metrics or demographic information. Classification Algorithms could also be applicable if I am looking to sort data according to regions of high, medium, or low unemployment.
+# 
+# But there are a couple of problems here. One is the quality and completeness of the data. Data that’s missing or not reflected can bias or make your model fail. Also, if the dataset is disproportionately large (e.g., more data points are in some years/locations) this can affect classification accuracy.
+# 
+# Features and engineering are a second possibility. It is very important for performance to decide which features to map on to the model and how to model them. And there are also sometimes complex relationships in the data that need more complex models or preprocessing.
+
 # ## Resources and References
 # *What resources and references have you used for this project?*
 # 📝 <!-- Answer Below -->
 
-# In[31]:
+# In[17]:
 
 
 # ⚠️ Make sure you run this cell at the end of your notebook before every submission!
