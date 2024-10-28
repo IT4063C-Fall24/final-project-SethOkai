@@ -51,17 +51,11 @@
 # 
 # 📝I will use descriptive data to describe unemployment rates of college graduates,do trend analysis to look for trends across the years, between countries with more and less unemployment and Use visualizations like line graphs and bar graphs to show trends and country comparisons
 
-# In[2]:
-
-
-# Start your code here
-
-
 # # Checkpoint 2
 
 # ## Importing libraries and loading datasets
 
-# In[3]:
+# In[20]:
 
 
 import matplotlib.pyplot as plt
@@ -86,7 +80,7 @@ analysis_data = pd.read_csv('unemployment_analysis.csv')
 # - Dropped columns that may not be necessary.
 # - Melted the DataFrame to have a long format for better analysis.
 
-# In[18]:
+# In[21]:
 
 
 # Loaded the datasets
@@ -160,7 +154,7 @@ print("\nCleaned Analysis Data:\n", analysis_data_cleaned.head())
 # 
 # **Summary: This graph shows some key indicators of U.S. unemployment from years past. Deep spikes could be times of financial crisis, and steep dips could be times of economic recovery.**
 
-# In[19]:
+# In[22]:
 
 
 import matplotlib.pyplot as plt
@@ -182,7 +176,7 @@ plt.show()
 # 
 # **Summary: This graph shows some key indicators of U.S. unemployment from years past. Deep spikes could be times of financial crisis, and steep dips could be times of economic recovery.**
 
-# In[20]:
+# In[23]:
 
 
 fred_data_cleaned['Date'] = pd.to_datetime(fred_data['Date'])
@@ -203,7 +197,7 @@ plt.show()
 
 # 
 
-# In[21]:
+# In[24]:
 
 
 #  Line Chart for BLS Unemployment Data
@@ -230,7 +224,7 @@ plt.show()
 # 
 # **Summary: This graph shows some key indicators of U.S. unemployment from years past. Deep spikes could be times of financial crisis, and steep dips could be times of economic recovery.**
 
-# In[22]:
+# In[25]:
 
 
 fred_data_cleaned['Date'] = pd.to_datetime(fred_data['Date'])
@@ -251,7 +245,7 @@ plt.show()
 # 
 # Insights: The interactive feature enhances comparison across countries. You can easily spot which countries faced higher unemployment rates during certain years and identify global or regional trends. For example, global recessions like the 2008 financial crisis may be reflected in multiple countries.
 
-# In[23]:
+# In[26]:
 
 
 import plotly.express as px
@@ -284,7 +278,7 @@ fig.show()
 # - Converted 'Year' column to datetime for BLS data
 # - Merged BLS and FRED data on 'Year'
 
-# In[24]:
+# In[27]:
 
 
 import pandas as pd
@@ -332,7 +326,7 @@ plt.show()
 # 
 # **Insights: Interactive option gives country comparison. It’s easy to spot which countries experienced higher unemployment in some years, and to see global or regional patterns. Global recessions such as the financial crisis of 2008, for instance, can manifest in more than one nation.**
 
-# In[25]:
+# In[28]:
 
 
 import plotly.express as px
@@ -368,13 +362,13 @@ fig.show()
 
 # 
 
-# In[26]:
+# In[29]:
 
 
 bls_fred_cleaned.columns
 
 
-# In[27]:
+# In[30]:
 
 
 import pandas as pd
@@ -415,7 +409,7 @@ plt.show()
 # *What resources and references have you used for this project?*
 # 📝 <!-- Answer Below -->
 
-# In[ ]:
+# In[31]:
 
 
 # ⚠️ Make sure you run this cell at the end of your notebook before every submission!
