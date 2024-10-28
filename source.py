@@ -55,7 +55,7 @@
 
 # ## Importing libraries and loading datasets
 
-# In[3]:
+# In[6]:
 
 
 import matplotlib.pyplot as plt
@@ -63,7 +63,6 @@ import pandas as pd
 import seaborn as sns
 import os
 import plotly.express as px
-
 
 # Load the datasets
 bls_data = pd.read_csv('bls_unemployment_data.csv')  
@@ -81,7 +80,7 @@ analysis_data = pd.read_csv('unemployment_analysis.csv')
 # - Melted the DataFrame to have a long format for better analysis.
 # - Observing if any data points doesnt fit the rest of the data: outliers
 
-# In[9]:
+# In[7]:
 
 
 # Loaded the datasets
@@ -150,12 +149,32 @@ print("\nCleaned FRED Data:\n", fred_data_cleaned.head())
 print("\nCleaned Analysis Data:\n", analysis_data_cleaned.head())
 
 
+# ## statistical summaries of the data.
+# In the BLS dataset 177 values of unemployment are given for a period. The unemployment rate is about 3.06%, which is pretty low in the years that are known. The data is from a low of 1.80% up to a high of 8.40% which indicates it varies over time. On the 25th percentile, 25 per cent of the data has rates under 2.20%, median is 2.50%, meaning half of the unemployment rates reported are below that figure. And the 75th percentile indicates that 75% of data are less than 3.90% which means the data distribution is at the upper end. There is a standard deviation (same as 1.14%) between the unemployment numbers on the average.
+# 
+# The FRED dataset by contrast contains 57 records for unemployment rates and year information. The average unemployment rate is 4.99% here which indicates low unemployment during the sample period. This record has the lowest rate at 3.40% and the highest at 14.80%, which shows there are big shifts in the labor market over this period. The 25th percentile represents the 25 % unemployment rate which is lower than 3.60% and the median is 3.90%, which shows most of the data points are below 3.60%. And even the 75th percentile (5.580%) illustrates how unemployment increases in later data years. 2.41% Standard deviation: There is more variation in unemployment rates than in the BLS data. These statistics provide an overview of unemployment, that is a snapshot of the economy over time, and it is used as a starting point for further research or simulation.
+
+# In[8]:
+
+
+print("BLS Data Descriptive Statistics:")
+print(bls_data_cleaned.describe())
+print("\n" + "-"*50 + "\n")
+
+print("FRED Data Descriptive Statistics:")
+print(fred_data_cleaned.describe())
+print("\n" + "-"*50 + "\n")
+
+print("Analysis Data Descriptive Statistics:")
+print(analysis_data_cleaned.describe())
+
+
 # ##  Line Chart for BLS Unemployment Data
 # **Description: This plot shows decades-based unemployment data from the Bureau of Labor Statistics (BLS). It indicates the way unemployment has changed from year to year.**
 # 
 # **Summary: This graph shows some key indicators of U.S. unemployment from years past. Deep spikes could be times of financial crisis, and steep dips could be times of economic recovery.**
 
-# In[10]:
+# In[9]:
 
 
 import matplotlib.pyplot as plt
@@ -177,7 +196,7 @@ plt.show()
 # 
 # **Summary: This graph shows some key indicators of U.S. unemployment from years past. Deep spikes could be times of financial crisis, and steep dips could be times of economic recovery.**
 
-# In[11]:
+# In[10]:
 
 
 fred_data_cleaned['Date'] = pd.to_datetime(fred_data['Date'])
@@ -198,7 +217,7 @@ plt.show()
 
 # 
 
-# In[12]:
+# In[11]:
 
 
 #  Line Chart for BLS Unemployment Data
@@ -225,7 +244,7 @@ plt.show()
 # 
 # **Summary: This graph shows some key indicators of U.S. unemployment from years past. Deep spikes could be times of financial crisis, and steep dips could be times of economic recovery.**
 
-# In[13]:
+# In[12]:
 
 
 fred_data_cleaned['Date'] = pd.to_datetime(fred_data['Date'])
@@ -246,7 +265,7 @@ plt.show()
 # 
 # Insights: The interactive feature enhances comparison across countries. You can easily spot which countries faced higher unemployment rates during certain years and identify global or regional trends. For example, global recessions like the 2008 financial crisis may be reflected in multiple countries.
 
-# In[14]:
+# In[13]:
 
 
 import plotly.express as px
@@ -279,7 +298,7 @@ fig.show()
 # - Converted 'Year' column to datetime for BLS data
 # - Merged BLS and FRED data on 'Year'
 
-# In[15]:
+# In[14]:
 
 
 import pandas as pd
@@ -327,7 +346,7 @@ plt.show()
 # 
 # **Insights: Interactive option gives country comparison. It’s easy to spot which countries experienced higher unemployment in some years, and to see global or regional patterns. Global recessions such as the financial crisis of 2008, for instance, can manifest in more than one nation.**
 
-# In[16]:
+# In[15]:
 
 
 import plotly.express as px
@@ -363,13 +382,13 @@ fig.show()
 
 # 
 
-# In[17]:
+# In[16]:
 
 
 bls_fred_cleaned.columns
 
 
-# In[18]:
+# In[17]:
 
 
 import pandas as pd
