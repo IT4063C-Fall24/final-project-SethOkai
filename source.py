@@ -414,9 +414,12 @@ plt.show()
 
 # ## Resources and References
 # *What resources and references have you used for this project?*
-# 📝Lecture video
+# 📝
+# - Lecture videos
 # - https://seaborn.pydata.org/tutorial/introduction.html
 # - https://builtin.com/data-science/data-visualization-tutorial
+# - https://matplotlib.org/stable/users/explain/quick_start.html
+# - https://plotly.com/python/getting-started/
 
 # In[1]:
 
