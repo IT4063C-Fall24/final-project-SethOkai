@@ -79,6 +79,7 @@ analysis_data = pd.read_csv('unemployment_analysis.csv')
 # - Extracted year from 'Date' and create a new 'Year' column.
 # - Dropped columns that may not be necessary.
 # - Melted the DataFrame to have a long format for better analysis.
+# - Observing if any data points doesnt fit the rest of the data: outliers
 
 # In[9]:
 
@@ -421,7 +422,7 @@ plt.show()
 # - https://matplotlib.org/stable/users/explain/quick_start.html
 # - https://plotly.com/python/getting-started/
 
-# In[1]:
+# In[ ]:
 
 
 # ⚠️ Make sure you run this cell at the end of your notebook before every submission!
