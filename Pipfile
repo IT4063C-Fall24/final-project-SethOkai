@@ -15,6 +15,7 @@ requests = "*"
 seaborn = "*"
 "plotly.express" = "*"
 plotly = "*"
+nbconvert = "*"
 
 [dev-packages]
 
