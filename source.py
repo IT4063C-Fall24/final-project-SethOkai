@@ -425,6 +425,23 @@ plt.tight_layout()
 plt.show()
 
 
+# ## Insights and Interesting Information
+# 
+# So far, some thoughts are worth stating from the comparison of the unemployment data from BLS and FRED datasets:
+# 
+# - **Trends In Years**: If we look at the unemployment rate over the years, we see what are the trends in economic cycles such as recession or recovery. The unemployment rises in times of economic downturn, like the financial crisis of 2008 and the COVID-19 pandemic.
+# 
+# - **Analysis by Dataset**:The Fred dataset provides a similar trend as the BLS dataset showing accuracy in both datasets.
+# 
+# - **Effects of Economic Events**: Certain events (government policies, shocks (such as natural disasters)) may immediately affect unemployment rates. These impacts are visible in the data, so we can see how these kinds of incidents impact employment.
+# 
+# ## Distributions of Variables
+# 
+# - **BLS Unemployment Values**: As with most statistics in the BLS dataset, most values fall within the lower range of unemployment, while the high values are fewer in frequency. This lopsided pattern shows that high unemployment is high but less widespread in normal economies.
+# 
+# - **FRED Unemployment Rate**: The FRED dataset can be like that but, since it has more than one dimension, it reveals a deeper picture. Unemployment rates could be seasonal or temporally variable as a function of economic policy and society.
+# 
+
 # ## Machine learning
 # For this project I could try various machine learning methods like supervised learning methods. I might use regression to predict unemployment, for example, on the basis of some critieria such as economic metrics or demographic information. Classification Algorithms could also be applicable if I am looking to sort data according to regions of high, medium, or low unemployment.
 # 
