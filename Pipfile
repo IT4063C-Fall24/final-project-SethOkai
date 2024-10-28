@@ -12,6 +12,9 @@ kaggle = "*"
 fredapi = "*"
 pandas = "*"
 requests = "*"
+seaborn = "*"
+"plotly.express" = "*"
+plotly = "*"
 
 [dev-packages]
 
