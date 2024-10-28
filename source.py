@@ -44,6 +44,10 @@
 # - Year
 # - Industry
 # - Geographic Region (State, MSA)
+# 
+# ### Proposed Merging Strategy
+# 
+# Combining these datasets based on the related variables of Year and State or Region can give you insights into how college-graduate unemployment compares with other economic metrics and patterns. This collaboration will help further study the effect of education level on jobs and the way this works across regions/countries and time.
 
 # ## Approach and Analysis
 # *What is your approach to answering your project question?*
@@ -458,7 +462,7 @@ plt.show()
 # - https://matplotlib.org/stable/users/explain/quick_start.html
 # - https://plotly.com/python/getting-started/
 
-# In[ ]:
+# In[2]:
 
 
 # ⚠️ Make sure you run this cell at the end of your notebook before every submission!
