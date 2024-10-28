@@ -55,7 +55,7 @@
 
 # ## Importing libraries and loading datasets
 
-# In[8]:
+# In[3]:
 
 
 import matplotlib.pyplot as plt
@@ -63,7 +63,6 @@ import pandas as pd
 import seaborn as sns
 import os
 import plotly.express as px
-
 
 
 # Load the datasets
@@ -419,7 +418,7 @@ plt.show()
 # - https://seaborn.pydata.org/tutorial/introduction.html
 # - https://builtin.com/data-science/data-visualization-tutorial
 
-# In[20]:
+# In[1]:
 
 
 # ⚠️ Make sure you run this cell at the end of your notebook before every submission!
