@@ -1,34 +1,57 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # {Project Title}📝
+# # The problem of unemployed college graduates📝
 # 
 # ![Banner](./assets/banner.jpeg)
 
 # ## Topic
 # *What problem are you (or your stakeholder) trying to address?*
-# 📝 <!-- Answer Below -->
+# 📝 Unemployment regarding college graduates
 
 # ## Project Question
 # *What specific question are you seeking to answer with this project?*
 # *This is not the same as the questions you ask to limit the scope of the project.*
-# 📝 <!-- Answer Below -->
+# 
+# 📝 Are unemployment rates for college graduates rising or falling over time, and how do these rates compare to overall unemployment rates across different countries?
 
 # ## What would an answer look like?
 # *What is your hypothesized answer to your question?*
-# 📝 <!-- Answer Below -->
+# 
+# 📝 I hypothesize that college graduates’ unemployment varies tremendously from country to country depending on economic stability, labour market needs, and education. Economy and job markets in economies with strong employment such as Germany or Canada should be lower when compared with economies with weak economy or youth unemployment, such as Greece or Spain. In the US i think that college graduates’ unemployment rate is slightly lower than the overall unemployment rate but has been a bit more volatile due to economic downturns (global financial crisis of 2008, COVID-19, etc.) These spikes may be short-lived, but the longer-term picture could be a gradual drop in graduates’ unemployment as economies recover and meet new market demands, especially in skilled areas.
 
 # ## Data Sources
 # *What 3 data sources have you identified for this project?*
 # *How are you going to relate these datasets?*
-# 📝 <!-- Answer Below -->
+# 📝
+# - URL(FILE): https://www.kaggle.com/datasets/pantanjali/unemployment-dataset
+# - URL(FILE): https://fred.stlouisfed.org/series/CGBD2024
+# - URL(API): https://www.bls.gov/developers/home.htm
+# 
+# In order to properly represent the issue of college graduates who don’t have jobs, the following variables from these datasets can be mapped:
+# 
+# **Unemployment Dataset**: This dataset has unemployment statistics for different demographic groups, such as education. Several variables of interest in integrating could be:
+# - Year
+# - State or Region
+# - Degree Levels (e.g., Bachelor Degree)
+# 
+# **Federal Reserve Economic Data (FRED)**: This dataset tracks economic indicators like the labor market. The relevant variables to merge could be:
+# - Year
+# - State or Region
+# - Rate Of Labour Force %
+# 
+# **BLS API**: The BLS API gives a wide range of labor market statistics, such as:
+# - Year
+# - Industry
+# - Geographic Region (State, MSA)
 
 # ## Approach and Analysis
 # *What is your approach to answering your project question?*
 # *How will you use the identified data to answer your project question?*
-# 📝 <!-- Start Discussing the project here; you can add as many code cells as you need -->
+# 
+# 📝I will use descriptive data to describe unemployment rates of college graduates,do trend analysis to look for trends across the years, between countries with more and less unemployment and Use visualizations like line graphs and bar graphs to show trends and country comparisons
 
-# In[16]:
+# In[2]:
 
 
 # Start your code here
@@ -38,7 +61,7 @@
 
 # ## Importing libraries and loading datasets
 
-# In[17]:
+# In[3]:
 
 
 import matplotlib.pyplot as plt
