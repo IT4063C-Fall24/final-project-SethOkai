@@ -55,7 +55,7 @@
 
 # ## Importing libraries and loading datasets
 
-# In[26]:
+# In[8]:
 
 
 import matplotlib.pyplot as plt
@@ -63,6 +63,7 @@ import pandas as pd
 import seaborn as sns
 import os
 import plotly.express as px
+
 
 
 # Load the datasets
@@ -80,7 +81,7 @@ analysis_data = pd.read_csv('unemployment_analysis.csv')
 # - Dropped columns that may not be necessary.
 # - Melted the DataFrame to have a long format for better analysis.
 
-# In[6]:
+# In[9]:
 
 
 # Loaded the datasets
@@ -154,7 +155,7 @@ print("\nCleaned Analysis Data:\n", analysis_data_cleaned.head())
 # 
 # **Summary: This graph shows some key indicators of U.S. unemployment from years past. Deep spikes could be times of financial crisis, and steep dips could be times of economic recovery.**
 
-# In[7]:
+# In[10]:
 
 
 import matplotlib.pyplot as plt
@@ -176,7 +177,7 @@ plt.show()
 # 
 # **Summary: This graph shows some key indicators of U.S. unemployment from years past. Deep spikes could be times of financial crisis, and steep dips could be times of economic recovery.**
 
-# In[8]:
+# In[11]:
 
 
 fred_data_cleaned['Date'] = pd.to_datetime(fred_data['Date'])
@@ -197,7 +198,7 @@ plt.show()
 
 # 
 
-# In[9]:
+# In[12]:
 
 
 #  Line Chart for BLS Unemployment Data
@@ -224,7 +225,7 @@ plt.show()
 # 
 # **Summary: This graph shows some key indicators of U.S. unemployment from years past. Deep spikes could be times of financial crisis, and steep dips could be times of economic recovery.**
 
-# In[10]:
+# In[13]:
 
 
 fred_data_cleaned['Date'] = pd.to_datetime(fred_data['Date'])
@@ -245,7 +246,7 @@ plt.show()
 # 
 # Insights: The interactive feature enhances comparison across countries. You can easily spot which countries faced higher unemployment rates during certain years and identify global or regional trends. For example, global recessions like the 2008 financial crisis may be reflected in multiple countries.
 
-# In[11]:
+# In[14]:
 
 
 import plotly.express as px
@@ -278,7 +279,7 @@ fig.show()
 # - Converted 'Year' column to datetime for BLS data
 # - Merged BLS and FRED data on 'Year'
 
-# In[12]:
+# In[15]:
 
 
 import pandas as pd
@@ -326,7 +327,7 @@ plt.show()
 # 
 # **Insights: Interactive option gives country comparison. It’s easy to spot which countries experienced higher unemployment in some years, and to see global or regional patterns. Global recessions such as the financial crisis of 2008, for instance, can manifest in more than one nation.**
 
-# In[13]:
+# In[16]:
 
 
 import plotly.express as px
@@ -338,7 +339,7 @@ fig = px.line(
     filtered_data,
     x='Year',
     y='Unemployment Rate',
-    color='Country Name',  # Color lines by country
+    color='Country Name',  
     title='Interactive Unemployment Rate by Country Over Selected Years',
     labels={'Unemployment Rate': 'Unemployment Rate (%)', 'Year': 'Year'}
 )
@@ -349,7 +350,7 @@ fig.update_layout(
     yaxis_title='Unemployment Rate (%)',
     hovermode='x unified',
     legend_title_text='Country',
-    template='plotly_dark'  # Optional: change to 'plotly' for a lighter theme
+    template='plotly_dark'  
 )
 
 fig.show()
@@ -362,13 +363,13 @@ fig.show()
 
 # 
 
-# In[14]:
+# In[17]:
 
 
 bls_fred_cleaned.columns
 
 
-# In[15]:
+# In[18]:
 
 
 import pandas as pd
@@ -414,9 +415,11 @@ plt.show()
 
 # ## Resources and References
 # *What resources and references have you used for this project?*
-# 📝 <!-- Answer Below -->
+# 📝Lecture video
+# - https://seaborn.pydata.org/tutorial/introduction.html
+# - https://builtin.com/data-science/data-visualization-tutorial
 
-# In[17]:
+# In[20]:
 
 
 # ⚠️ Make sure you run this cell at the end of your notebook before every submission!
