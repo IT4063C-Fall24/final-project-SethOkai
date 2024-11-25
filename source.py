@@ -59,7 +59,7 @@
 
 # ## Importing libraries and loading datasets
 
-# In[1]:
+# In[2]:
 
 
 import matplotlib.pyplot as plt
@@ -87,13 +87,8 @@ analysis_data = pd.read_csv('extracted_files/unemployment_analysis.csv')
 # - Melted the DataFrame to have a long format for better analysis.
 # - Observing if any data points doesnt fit the rest of the data: outliers
 
-# In[2]:
+# In[4]:
 
-
-# Loaded the datasets
-bls_data = pd.read_csv('bls_unemployment_data.csv')
-fred_data = pd.read_csv('fred_unemployment_data.csv')
-analysis_data = pd.read_csv('unemployment_analysis.csv')
 
 # Data Cleaning Function
 def clean_bls_data(bls_df):
