@@ -59,7 +59,7 @@
 
 # ## Importing libraries and loading datasets
 
-# In[6]:
+# In[1]:
 
 
 import matplotlib.pyplot as plt
@@ -68,10 +68,13 @@ import seaborn as sns
 import os
 import plotly.express as px
 
+
+os.chdir('C:/Users/setho/OneDrive/Documents/GitHub/hello-github-okaiso-uc/final-project-SethOkai')
+
 # Load the datasets
-bls_data = pd.read_csv('bls_unemployment_data.csv')  
-fred_data = pd.read_csv('fred_unemployment_data.csv')  
-analysis_data = pd.read_csv('unemployment_analysis.csv')  
+bls_data = pd.read_csv('extracted_files/bls_unemployment_data.csv') 
+fred_data = pd.read_csv('extracted_files/fred_unemployment_data.csv')  
+analysis_data = pd.read_csv('extracted_files/unemployment_analysis.csv')  
 
 
 # ## Data cleaning
@@ -84,7 +87,7 @@ analysis_data = pd.read_csv('unemployment_analysis.csv')
 # - Melted the DataFrame to have a long format for better analysis.
 # - Observing if any data points doesnt fit the rest of the data: outliers
 
-# In[7]:
+# In[2]:
 
 
 # Loaded the datasets
@@ -158,7 +161,7 @@ print("\nCleaned Analysis Data:\n", analysis_data_cleaned.head())
 # 
 # The FRED dataset by contrast contains 57 records for unemployment rates and year information. The average unemployment rate is 4.99% here which indicates low unemployment during the sample period. This record has the lowest rate at 3.40% and the highest at 14.80%, which shows there are big shifts in the labor market over this period. The 25th percentile represents the 25 % unemployment rate which is lower than 3.60% and the median is 3.90%, which shows most of the data points are below 3.60%. And even the 75th percentile (5.580%) illustrates how unemployment increases in later data years. 2.41% Standard deviation: There is more variation in unemployment rates than in the BLS data. These statistics provide an overview of unemployment, that is a snapshot of the economy over time, and it is used as a starting point for further research or simulation.
 
-# In[8]:
+# In[ ]:
 
 
 print("BLS Data Descriptive Statistics:")
@@ -178,7 +181,7 @@ print(analysis_data_cleaned.describe())
 # 
 # **Summary: This graph shows some key indicators of U.S. unemployment from years past. Deep spikes could be times of financial crisis, and steep dips could be times of economic recovery.**
 
-# In[9]:
+# In[ ]:
 
 
 import matplotlib.pyplot as plt
@@ -200,7 +203,7 @@ plt.show()
 # 
 # **Summary: This graph shows some key indicators of U.S. unemployment from years past. Deep spikes could be times of financial crisis, and steep dips could be times of economic recovery.**
 
-# In[10]:
+# In[ ]:
 
 
 fred_data_cleaned['Date'] = pd.to_datetime(fred_data['Date'])
@@ -221,7 +224,7 @@ plt.show()
 
 # 
 
-# In[11]:
+# In[ ]:
 
 
 #  Line Chart for BLS Unemployment Data
@@ -248,7 +251,7 @@ plt.show()
 # 
 # **Summary: This graph shows some key indicators of U.S. unemployment from years past. Deep spikes could be times of financial crisis, and steep dips could be times of economic recovery.**
 
-# In[12]:
+# In[ ]:
 
 
 fred_data_cleaned['Date'] = pd.to_datetime(fred_data['Date'])
@@ -269,7 +272,7 @@ plt.show()
 # 
 # Insights: The interactive feature enhances comparison across countries. You can easily spot which countries faced higher unemployment rates during certain years and identify global or regional trends. For example, global recessions like the 2008 financial crisis may be reflected in multiple countries.
 
-# In[13]:
+# In[ ]:
 
 
 import plotly.express as px
@@ -302,7 +305,7 @@ fig.show()
 # - Converted 'Year' column to datetime for BLS data
 # - Merged BLS and FRED data on 'Year'
 
-# In[14]:
+# In[ ]:
 
 
 import pandas as pd
@@ -350,7 +353,7 @@ plt.show()
 # 
 # **Insights: Interactive option gives country comparison. It’s easy to spot which countries experienced higher unemployment in some years, and to see global or regional patterns. Global recessions such as the financial crisis of 2008, for instance, can manifest in more than one nation.**
 
-# In[15]:
+# In[ ]:
 
 
 import plotly.express as px
@@ -386,13 +389,13 @@ fig.show()
 
 # 
 
-# In[16]:
+# In[ ]:
 
 
 bls_fred_cleaned.columns
 
 
-# In[17]:
+# In[ ]:
 
 
 import pandas as pd
@@ -453,6 +456,157 @@ plt.show()
 # 
 # Features and engineering are a second possibility. It is very important for performance to decide which features to map on to the model and how to model them. And there are also sometimes complex relationships in the data that need more complex models or preprocessing.
 
+# # Exploratory Data Analysis (EDA)
+# To start, I am going to check the datasets to see how it is structured and for missing values or out of order time spans. I will plot the data as line plots, histograms, and scatter plots to look for pattern and exceptions in the unemployment rates.
+
+# In[68]:
+
+
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.impute import SimpleImputer
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
+
+
+# # Merging the data
+
+# In[71]:
+
+
+bls_data = pd.read_csv('extracted_files/bls_unemployment_data.csv')
+fred_data = pd.read_csv('extracted_files/fred_unemployment_data.csv')
+analysis_data = pd.read_csv('extracted_files/unemployment_analysis.csv')
+
+bls_data_cleaned = bls_data.drop(columns=['Period', 'Footnote']).rename(columns={'Year': 'Year', 'Value': 'BLS_Unemployment_Value'})
+fred_data_cleaned = fred_data.rename(columns={'Date': 'Year', 'Unemployment Rate': 'FRED_Unemployment_Rate'})
+analysis_data_cleaned = analysis_data.drop(columns=['Country Code']).rename(columns={'Country Name': 'Country'}).melt(id_vars=['Country'], var_name='Year', value_name='Country_Unemployment_Rate')
+
+bls_data_cleaned['Year'] = pd.to_numeric(bls_data_cleaned['Year'], errors='coerce')
+fred_data_cleaned['Year'] = pd.to_numeric(fred_data_cleaned['Year'], errors='coerce')
+analysis_data_cleaned['Year'] = pd.to_numeric(analysis_data_cleaned['Year'], errors='coerce')
+
+merged_data = pd.merge(bls_data_cleaned, fred_data_cleaned, on='Year', how='outer')
+merged_data = pd.merge(merged_data, analysis_data_cleaned, on='Year', how='outer')
+
+imputer = SimpleImputer(strategy='mean')
+merged_data_imputed = pd.DataFrame(imputer.fit_transform(merged_data.select_dtypes(include=['float64', 'int64'])), columns=merged_data.select_dtypes(include=['float64', 'int64']).columns)
+final_data = pd.concat([merged_data.select_dtypes(exclude=['float64', 'int64']), merged_data_imputed], axis=1)
+
+
+# # Splitting the Dataset
+# I’ll split the dataset into training and test data with previous years of training data and later years of test data for the purpose of prediction. This helps to keep the time order consistent across time series.
+
+# In[72]:
+
+
+X = final_data.drop(['Country'], axis=1)
+y = final_data['Country']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
+
+
+# # Data Scaling and Normalization
+# For features sensitive models like KNN or SVM, I will use StandardScaler to get the numerical data as close as possible so that all features are of equal size and do not overscale the mode
+
+# # Handling Categorical Data and adding Data scaling and normalization 
+# When we have categorical variables, like country names in the dataset, I encode those using OneHotEncoding or LabelEncoder to support Machine Learning algorithms. I also will use StandardScaler to get the numerical data as close as possible so that all features are of equal size and do not overscale the mode
+
+# In[73]:
+
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import StandardScaler, MinMaxScaler, OneHotEncoder
+from sklearn.impute import SimpleImputer
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import LabelEncoder
+
+
+
+# Encode the target variable if it's categorical
+label_encoder = LabelEncoder()
+y_encoded = label_encoder.fit_transform(y)
+
+# Separate numeric and categorical features
+numeric_features = X.select_dtypes(include=['float64', 'int64']).columns
+categorical_features = X.select_dtypes(include=['object']).columns
+
+# Define separate transformers for scaling and normalization of numeric features
+scaling_transformer = Pipeline(steps=[
+    ('imputer', SimpleImputer(strategy='mean')),  # Handle missing values
+    ('scaler', StandardScaler())  # Standardization (scaling)
+])
+
+normalization_transformer = Pipeline(steps=[
+    ('imputer', SimpleImputer(strategy='mean')),  # Handle missing values
+    ('normalizer', MinMaxScaler())  # Min-Max Normalization
+])
+
+# Preprocessor to apply scaling to certain columns and normalization to others
+preprocessor = ColumnTransformer(
+    transformers=[
+        ('scale', scaling_transformer, numeric_features),  # Scaling
+        ('normalize', normalization_transformer, numeric_features)  # Normalization
+    ]
+)
+
+# Model pipeline integrating preprocessor and classifier
+model_pipeline = Pipeline(steps=[
+    ('preprocessor', preprocessor),
+    ('classifier', LogisticRegression())
+])
+
+
+# # Split the data into training and testing sets
+
+# In[74]:
+
+
+X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
+model_pipeline.fit(X_train, y_train)
+accuracy = model_pipeline.score(X_test, y_test)
+print(f"Model Accuracy: {accuracy}")
+
+
+# # Testing Multiple Algorithms
+# I will try some different ML algorithms and see which is the best. These can be Linear Regression, Random Forest, SVM etc. I’ll run all the models, and assess the performance in MSE and R-squared metrics (regression models), or accuracy for classification models.
+
+# In[75]:
+
+
+models = {
+    'Logistic Regression': LogisticRegression(),
+    'Random Forest': RandomForestClassifier(),
+    'K-Nearest Neighbors': KNeighborsClassifier(),
+    'Support Vector Machine': SVC()
+}
+
+for model_name, model in models.items():
+    model_pipeline = Pipeline(steps=[
+        ('preprocessor', preprocessor),
+        ('classifier', model)
+    ])
+  
+    model_pipeline.fit(X_train, y_train)
+    y_pred = model_pipeline.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    print(f"{model_name} Accuracy: {accuracy:.4f}")
+
+
+# Random Forest seems to be the most accurate model
+
+# Havent recieved any feedback yet.
+
 # ## Resources and References
 # *What resources and references have you used for this project?*
 # 📝
@@ -462,7 +616,7 @@ plt.show()
 # - https://matplotlib.org/stable/users/explain/quick_start.html
 # - https://plotly.com/python/getting-started/
 
-# In[2]:
+# In[ ]:
 
 
 # ⚠️ Make sure you run this cell at the end of your notebook before every submission!
