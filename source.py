@@ -519,7 +519,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle
 # # Handling Categorical Data and adding Data scaling and normalization 
 # When we have categorical variables, like country names in the dataset, I encode those using OneHotEncoding or LabelEncoder to support Machine Learning algorithms. I also will use StandardScaler to get the numerical data as close as possible so that all features are of equal size and do not overscale the mode
 
-# In[73]:
+# In[ ]:
 
 
 import pandas as pd
@@ -543,20 +543,20 @@ categorical_features = X.select_dtypes(include=['object']).columns
 
 # Define separate transformers for scaling and normalization of numeric features
 scaling_transformer = Pipeline(steps=[
-    ('imputer', SimpleImputer(strategy='mean')),  # Handle missing values
-    ('scaler', StandardScaler())  # Standardization (scaling)
+    ('imputer', SimpleImputer(strategy='mean')),  
+    ('scaler', StandardScaler())  
 ])
 
 normalization_transformer = Pipeline(steps=[
-    ('imputer', SimpleImputer(strategy='mean')),  # Handle missing values
-    ('normalizer', MinMaxScaler())  # Min-Max Normalization
+    ('imputer', SimpleImputer(strategy='mean')),  
+    ('normalizer', MinMaxScaler())  
 ])
 
 # Preprocessor to apply scaling to certain columns and normalization to others
 preprocessor = ColumnTransformer(
     transformers=[
-        ('scale', scaling_transformer, numeric_features),  # Scaling
-        ('normalize', normalization_transformer, numeric_features)  # Normalization
+        ('scale', scaling_transformer, numeric_features),  
+        ('normalize', normalization_transformer, numeric_features)  
     ]
 )
 
