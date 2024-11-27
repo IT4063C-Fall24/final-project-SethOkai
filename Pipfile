@@ -8,6 +8,14 @@ ipykernel = "*"
 jupyter = "*"
 notebook = "*"
 black = "*"
+kaggle = "*"
+fredapi = "*"
+pandas = "*"
+requests = "*"
+seaborn = "*"
+"plotly.express" = "*"
+plotly = "*"
+nbconvert = "*"
 
 [dev-packages]
 
