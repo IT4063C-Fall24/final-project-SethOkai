@@ -10,7 +10,13 @@ python = "^3.11"
 jupyter = "^1.0.0"
 ipykernel = "^6.25.2"
 notebook = "^7.0.6"
+matplotlib = "^3.9.2"
+seaborn = "^0.13.2"
+scikit-learn = "^1.5.2"
 
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
 
 [build-system]
 requires = ["poetry-core"]
